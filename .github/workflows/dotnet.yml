@@ -21,3 +21,14 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+         Wait.img
+        name: SharpBoot Release
+        tag_name: SharpBoot-Releases
+      env:
+        GITHUB_TOKEN: ${{ secrets.TEST }}
