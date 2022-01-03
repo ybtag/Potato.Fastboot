@@ -27,6 +27,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.TEST }}
       with:
       tag_name: SharpBoot-Release
-          name: main
-          files: | 
-            Wait.img
+      name: SharpBoot Release
+      files: | 
+        Wait.img
