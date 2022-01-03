@@ -23,8 +23,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Release DLL
       uses: softprops/action-gh-release@v1
-      env:
-      GITHUB_TOKEN: ${{ secrets.TEST }}
+      env: GITHUB_TOKEN: ${{ secrets.TEST }}
       with:
       tag_name: SharpBoot-Release
       name: SharpBoot Release
