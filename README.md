@@ -1,7 +1,9 @@
 # SharpBoot (Potato.Fastboot Fork)
 
 
-NOTICE: Builds fail on tarvis ci since i have insufficent credits (migrate to git workflow wen)
+~~NOTICE: Builds fail on tarvis ci since i have insufficent credits (migrate to git workflow wen)~~
+
+I have migrated it to github workflows :)
 
 
 ![GPL-3.0](https://img.shields.io/github/license/mashed-potatoes/Potato.Fastboot.svg)
