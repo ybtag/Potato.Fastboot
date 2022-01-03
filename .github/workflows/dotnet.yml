@@ -21,10 +21,3 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Release DLL
-      uses: softprops/action-gh-release@v1
-      with:
-      tag_name: SharpBoot-Release
-      name: SharpBoot Release
-      files: | 
-        Wait.img
