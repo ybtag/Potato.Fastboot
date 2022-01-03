@@ -19,8 +19,8 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Build and prepare for release
+      run: dotnet build --no-restore && echo "::set-output name=today::$(date +"%d-%m-%y")"
 
 
     - name: Upload to Release
@@ -29,6 +29,6 @@ jobs:
         files: |
             /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net472/SharpBoot.dll
         name: SharpBoot Release
-        tag_name: ${{ date +"%d-%m-%y" }}
+        tag_name: ${{ steps.date.outputs.today }}
       env:
         GITHUB_TOKEN: ${{ secrets.TEST }}
