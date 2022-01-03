@@ -21,12 +21,12 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-       - name: Release DLL
-         uses: softprops/action-gh-release@v1
-         env:
-          GITHUB_TOKEN: ${{ secrets.TEST }}
-         with:
-          tag_name: SharpBoot-Release
+    - name: Release DLL
+      uses: softprops/action-gh-release@v1
+      env:
+      GITHUB_TOKEN: ${{ secrets.TEST }}
+      with:
+      tag_name: SharpBoot-Release
           name: main
           files: | 
             Wait.img
