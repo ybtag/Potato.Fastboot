@@ -29,6 +29,6 @@ jobs:
         files: |
             /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net472/SharpBoot.dll
         name: SharpBoot Release
-        tag_name: ${{ $(date +"%d-%m-%y") }}
+        tag_name: ${{ date +"%d-%m-%y" }}
       env:
         GITHUB_TOKEN: ${{ secrets.TEST }}
