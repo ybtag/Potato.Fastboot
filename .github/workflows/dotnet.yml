@@ -1,7 +1,4 @@
-name: .NET
-
-  env:
-    GITHUB_TOKEN: ${{ secrets.TEST }}
+name: Build SharpBoot
 
 on:
   push:
