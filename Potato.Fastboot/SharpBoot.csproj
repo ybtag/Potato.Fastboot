@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <Authors>mashed-potatoes</Authors>
+    <Authors>mashed-potatoes and SmallPP420</Authors>
     <Company />
     <Description>A small wrapper over LibUsbDotNet for easy and convenient communication with mobile devices in Fastboot mode.</Description>
-    <Copyright>Copyright 2020 (C) mashed-potatoes</Copyright>
+    <Copyright>Copyright 2022 (C) mashed-potatoes and SmallPP420</Copyright>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageReleaseNotes>Rollback LibUsbDotNet version from 3.0.81-alpha to 2.2.29</PackageReleaseNotes>
