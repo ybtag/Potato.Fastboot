@@ -27,7 +27,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-         Wait.img
+         SharpBoot/SharpBoot/bin/Debug/net472/SharpBoot.dll
         name: SharpBoot Release
         tag_name: SharpBoot-Releases
       env:
