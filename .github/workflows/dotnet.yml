@@ -31,5 +31,3 @@ jobs:
             /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net472/SharpBoot.dll
         name: SharpBoot Release
         tag_name: ${{ steps.date.outputs.today }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.TEST }}
