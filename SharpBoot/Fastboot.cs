@@ -8,7 +8,7 @@ using LibUsbDotNet;
 using LibUsbDotNet.LibUsb;
 using LibUsbDotNet.Main;
 
-namespace RecoveryBoot
+namespace SharpBoot
 {
     /// <summary>
     /// The main Fastboot class.
