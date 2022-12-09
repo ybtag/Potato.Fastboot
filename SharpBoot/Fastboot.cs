@@ -19,8 +19,8 @@ namespace RecoveryBoot
     /// </remarks>
     public class Fastboot
     {
-        private const int USB_VID = 0x0E8D; // MediaTek Fastboot
-        private const int USB_PID = 0x201C; //        Info
+        private const int USB_VID = 0x18D1; // MediaTek Fastboot
+        private const int USB_PID = 0xD00D; //        Info
         // Change Above If Needed.
 
         private const int HEADER_SIZE = 4;
