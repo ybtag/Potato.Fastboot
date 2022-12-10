@@ -28,6 +28,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-            /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net472/SharpBoot.dll
+            /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net6.0/SharpBoot.dll
         name: SharpBoot Release
         tag_name: ${{ steps.date.outputs.today }}
