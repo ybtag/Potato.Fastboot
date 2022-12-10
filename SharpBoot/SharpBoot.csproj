@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>mashed-potatoes and SmallPP420</Authors>
     <Company />
     <Description>A small wrapper over LibUsbDotNet for easy and convenient communication with mobile devices in Fastboot mode.</Description>
@@ -13,9 +13,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/mashed-potatoes/Potato.Fastboot.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/mashed-potatoes/Potato.Fastboot</PackageProjectUrl>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
