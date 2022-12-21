@@ -325,26 +325,26 @@ namespace SharpBoot
         /// Upload data from file to device's buffer and flash
         /// </summary>
         /// <param name="path">Path to file</param>
-        public void Flash(string path,string partition)
+        public Response Flash(string path,string partition)
         {
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 UploadData(stream);
             }
-            Command(Encoding.ASCII.GetBytes($"flash:{partition}"));
+            return Command(Encoding.ASCII.GetBytes($"flash:{partition}"));
         }
 
         /// <summary>
         /// Upload data from file to device's buffer and boot
         /// </summary>
         /// <param name="path">Path to file</param>
-        public void Boot(string path)
+        public Response Boot(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 UploadData(stream);
             }
-            Command(Encoding.ASCII.GetBytes($"boot"));
+            return Command(Encoding.ASCII.GetBytes($"boot"));
         }
         /// <summary>
         /// Get list of available devices
