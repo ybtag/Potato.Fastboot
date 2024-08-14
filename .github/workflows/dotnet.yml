@@ -1,4 +1,4 @@
-name: Build SharpBoot
+name: Build Potato.Fastboot
 
 permissions:
   contents: write
@@ -31,6 +31,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-            /home/runner/work/SharpBoot/SharpBoot/SharpBoot/bin/Debug/net6.0/SharpBoot.dll
+            /home/runner/work/Fastboot/Fastboot/Fastboot/bin/Debug/net6.0/Fastboot.dll
         name: SharpBoot Release
         tag_name: ${{ steps.date.outputs.today }}
