@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +8,7 @@ using LibUsbDotNet;
 using LibUsbDotNet.LibUsb;
 using LibUsbDotNet.Main;
 
-namespace Potato.Fastboot
+namespace SharpBoot
 {
     /// <summary>
     /// The main Fastboot class.
@@ -19,8 +19,10 @@ namespace Potato.Fastboot
     /// </remarks>
     public class Fastboot
     {
-        private const int USB_VID = 0x18D1;
-        private const int USB_PID = 0xD00D;
+        private const int USB_VID = 0x18D1; // MediaTek Fastboot
+        private const int USB_PID = 0xD00D; //        Info
+        // Change Above If Needed.
+
         private const int HEADER_SIZE = 4;
         private const int BLOCK_SIZE = 512 * 1024; // 512 KB
 
@@ -36,6 +38,14 @@ namespace Potato.Fastboot
             Data,
             Info,
             Unknown
+        }
+
+        public enum RebootOptions
+        {
+            System,
+            Fastbootd,
+            Bootloader,
+            Recovery
         }
 
         public class Response
@@ -298,17 +308,44 @@ namespace Potato.Fastboot
         }
 
         /// <summary>
-        /// Upload data from file to device's buffer
+        /// Resume Boot
+        /// </summary>
+        public Response ResumeBoot()
+        {
+            return Command(Encoding.ASCII.GetBytes("continue"));
+        }
+
+        public Response SendOemCommand(string command)
+        {
+            return Command(Encoding.ASCII.GetBytes($"oem {command}"));
+        }
+
+
+        /// <summary>
+        /// Upload data from file to device's buffer and flash
         /// </summary>
         /// <param name="path">Path to file</param>
-        public void UploadData(string path)
+        public Response Flash(string path,string partition)
         {
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 UploadData(stream);
             }
+            return Command(Encoding.ASCII.GetBytes($"flash:{partition}"));
         }
 
+        /// <summary>
+        /// Upload data from file to device's buffer and boot
+        /// </summary>
+        /// <param name="path">Path to file</param>
+        public Response Boot(string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                UploadData(stream);
+            }
+            return Command(Encoding.ASCII.GetBytes($"boot"));
+        }
         /// <summary>
         /// Get list of available devices
         /// </summary>
@@ -346,6 +383,23 @@ namespace Potato.Fastboot
         public Response Command(string command)
         {
             return Command(Encoding.ASCII.GetBytes(command));
+        }
+
+        public Response Reboot(RebootOptions options)
+        {
+            switch(options)
+            {
+                case RebootOptions.Bootloader:
+                    return Command(Encoding.ASCII.GetBytes("reboot-bootloader"));
+                case RebootOptions.Recovery:
+                    return Command(Encoding.ASCII.GetBytes("reboot-recovery"));
+                case RebootOptions.Fastbootd:
+                    return Command(Encoding.ASCII.GetBytes("reboot-fastboot"));
+                case RebootOptions.System:
+                    return Command(Encoding.ASCII.GetBytes("reboot"));
+                default:
+                    throw new Exception("No reboot option provided or a device hasnt been connected");
+            }
         }
     }
 }
