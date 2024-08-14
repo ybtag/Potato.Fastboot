@@ -21,6 +21,8 @@ namespace SharpBoot
     {
         private const int USB_VID = 0x18D1; // MediaTek Fastboot
         private const int USB_PID = 0xD00D; //        Info
+        private const int altFB_VID = 0x0E8D; // another MediaTek Fastboot
+        private const int altFB_PID = 0x201C;
         // Change Above If Needed.
 
         private const int HEADER_SIZE = 4;
@@ -134,7 +136,13 @@ namespace SharpBoot
 
             if (device == null)
             {
-                throw new Exception("No devices available.");
+                finder = string.IsNullOrWhiteSpace(targetSerialNumber) ? new UsbDeviceFinder(altFB_VID, altFB_PID) : new UsbDeviceFinder(USB_VID, USB_PID, targetSerialNumber);
+                device = UsbDevice.OpenUsbDevice(finder);
+
+                if (device == null) 
+                {
+                    throw new Exception("No devices available.");
+                }
             }
 
             var wDev = device as IUsbDevice;
